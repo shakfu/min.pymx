@@ -6,8 +6,19 @@ cmake_minimum_required(VERSION 3.0)
 set(C74_MIN_API_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../min-api)
 include(${C74_MIN_API_DIR}/script/min-pretarget.cmake)
 
+find_package(Python 3.8 COMPONENTS Interpreter Development Development.Module REQUIRED)
+
+# Detect the installed pybind11 package and import it into CMake
+execute_process(
+    COMMAND "${Python_EXECUTABLE}" -m pybind11 --cmakedir
+    OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE PB_DIR)
+list(APPEND CMAKE_PREFIX_PATH "${PB_DIR}")
+find_package(pybind11 CONFIG REQUIRED)
+
+
+
 # pybind11
-find_package(pybind11 REQUIRED)
+#find_package(pybind11 REQUIRED)
 
 #############################################################
 # MAX EXTERNAL
@@ -29,8 +40,6 @@ add_library(
 	MODULE
 	${SOURCE_FILES}
 )
-
-# set(PYBIND11_PYTHON_VERSION 3.9)
 
 
 include(${C74_MIN_API_DIR}/script/min-posttarget.cmake)

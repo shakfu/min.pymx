@@ -7,11 +7,18 @@ A basic python3 external built using the Max min-api
 
 To build externals, you will need some form of compiler support on your system. 
 
-* On the Mac this means **Xcode 10 or higher** (you can get from the App Store for free). 
-* On Windows this means **Visual Studio 2017 or 2019**  (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
+-  On the Mac this means **Xcode 10 or higher** (you can get from the App Store for free). 
+
+- On Windows this means **Visual Studio 2017 or 2019**  (you can download a free version from Microsoft). The installer for Visual Studio 2017 offers an option to install Git, which you should choose to do.
 
 You will also need to install a recent version of [CMake](https://cmake.org/download/) (version 3.19 or higher).
 
+In addition, you will need to install [pybind11](https://pybind11.readthedocs.io/en/stable/index.html), via pip:
+
+```sh
+pip3 install pybind11
+
+```
 
 ## Building
 
@@ -19,7 +26,7 @@ You will also need to install a recent version of [CMake](https://cmake.org/down
 ./build.sh
 ```
 
-### Mac 
+### Mac
 
 Run `cmake -G Xcode ..`
 
